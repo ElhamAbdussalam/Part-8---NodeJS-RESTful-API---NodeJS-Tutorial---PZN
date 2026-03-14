@@ -24,7 +24,7 @@ const login = async (req, res, next) => {
 
 const get = async (req, res, next) => {
   try {
-    const username = "TODO";
+    const username = req.user.username;
     const result = await userService.get(username);
     res.status(200).json({
       data: result,
@@ -34,4 +34,4 @@ const get = async (req, res, next) => {
   }
 };
 
-export default { register, login };
+export default { register, login, get };
