@@ -92,4 +92,16 @@ describe("POST /api/users/login", function () {
     expect(result.status).toBe(400);
     expect(result.body.errors).toBeDefined();
   });
+
+  it("should reject login if password is wrong", async () => {
+    const result = await supertest(web).post("/api/users/login").send({
+      username: "test",
+      password: "salah",
+    });
+
+    logger.info(result.body);
+
+    expect(result.status).toBe(401);
+    expect(result.body.errors).toBeDefined();
+  });
 });
