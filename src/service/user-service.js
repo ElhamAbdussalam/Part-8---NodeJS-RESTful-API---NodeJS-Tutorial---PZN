@@ -71,4 +71,4 @@ const login = async (request) => {
   });
 };
 
-export default { register };
+export default { register, login };

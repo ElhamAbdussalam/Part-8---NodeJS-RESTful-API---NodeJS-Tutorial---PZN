@@ -22,7 +22,7 @@
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "joi": "^18.0.2",
-    "uuid": "^13.0.0",
+    "uuid": "^9.0.1",
     "winston": "^3.19.0"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
+      "^.+\\.jsx?$": "babel-jest"
     }
   }
 }
