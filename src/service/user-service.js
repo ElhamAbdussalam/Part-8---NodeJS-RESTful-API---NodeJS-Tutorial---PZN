@@ -92,4 +92,4 @@ const get = async (username) => {
   return user;
 };
 
-export default { register, login };
+export default { register, login, get };
