@@ -79,4 +79,4 @@ const update = async (user, request) => {
   });
 };
 
-export default { create, get };
+export default { create, get, update };
