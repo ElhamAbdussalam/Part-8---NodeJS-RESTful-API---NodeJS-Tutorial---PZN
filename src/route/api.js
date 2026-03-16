@@ -12,6 +12,6 @@ userRouter.patch("/api/users/current", userController.update);
 userRouter.delete("/api/users/logout", userController.logout);
 
 // Contact API
-userRouter.post("/api/contacts", userController.create);
+userRouter.post("/api/contacts", contactController.create);
 
 export { userRouter };
