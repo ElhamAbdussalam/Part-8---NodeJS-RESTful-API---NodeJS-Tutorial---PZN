@@ -137,4 +137,20 @@ describe("PUT /api/contacts/:contactId", function () {
 
     expect(result.status).toBe(400);
   });
+
+  it("should reject if contact is not found", async () => {
+    const testContact = await getTestContact();
+
+    const result = await supertest(web)
+      .put("/api/contacts/" + (testContact.id + 1))
+      .set("Authorization", "test")
+      .send({
+        first_name: "elham",
+        last_name: "abdussalam",
+        email: "elham@gmail.com",
+        phone: "32323232",
+      });
+
+    expect(result.status).toBe(404);
+  });
 });
