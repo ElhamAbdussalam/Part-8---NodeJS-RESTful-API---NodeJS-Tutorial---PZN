@@ -178,4 +178,13 @@ describe("DELETE /api/contacts/:contactId", function () {
     testContact = await getTestContact();
     expect(testContact).toBeNull();
   });
+
+  it("should reject if contact is not found", async () => {
+    let testContact = await getTestContact();
+    const result = await supertest(web)
+      .delete("/api/contacts/" + (testContact.id + 1))
+      .set("Authorization", "test");
+
+    expect(result.status).toBe(404);
+  });
 });
