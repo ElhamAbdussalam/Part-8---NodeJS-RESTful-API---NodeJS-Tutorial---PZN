@@ -2,6 +2,7 @@ import { validate } from "../validation/validation.js";
 import {
   createContactValidation,
   getContactValidation,
+  searchContactValidation,
   updateContactValidation,
 } from "../validation/contact-validation.js";
 import { prismaClient } from "../application/database.js";
@@ -169,4 +170,4 @@ const search = async (user, request) => {
   };
 };
 
-export default { create, get, update, remove };
+export default { create, get, update, remove, search };
