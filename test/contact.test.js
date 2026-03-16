@@ -89,3 +89,36 @@ describe("GET /api/contacts/:contactId", function () {
     expect(result.status).toBe(404);
   });
 });
+
+describe("PUT /api/contacts/:contactId", function () {
+  beforeEach(async () => {
+    await createTestUser();
+    await createTestContact();
+  });
+
+  afterEach(async () => {
+    await removeAllTestContact();
+    await removeTestUser();
+  });
+
+  it("should can update existing contact", async () => {
+    const testContact = await getTestContact();
+
+    const result = await supertest(web)
+      .put("/api/contacts/" + testContact.id)
+      .set("Authorization", "test")
+      .send({
+        first_name: "elham",
+        last_name: "abdussalam",
+        email: "elham@gmail.com",
+        phone: "32323232",
+      });
+
+    expect(result.status).toBe(200);
+    expect(result.body.data.id).toBe(testContact.id);
+    expect(result.body.data.first_name).toBe("elham");
+    expect(result.body.data.last_name).toBe("abdussalam");
+    expect(result.body.data.email).toBe("elham@gmail.com");
+    expect(result.body.data.phone).toBe("32323232");
+  });
+});
