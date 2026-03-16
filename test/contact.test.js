@@ -121,4 +121,20 @@ describe("PUT /api/contacts/:contactId", function () {
     expect(result.body.data.email).toBe("elham@gmail.com");
     expect(result.body.data.phone).toBe("32323232");
   });
+
+  it("should reject if request is invalid", async () => {
+    const testContact = await getTestContact();
+
+    const result = await supertest(web)
+      .put("/api/contacts/" + testContact.id)
+      .set("Authorization", "test")
+      .send({
+        first_name: "",
+        last_name: "",
+        email: "elham",
+        phone: "",
+      });
+
+    expect(result.status).toBe(400);
+  });
 });
