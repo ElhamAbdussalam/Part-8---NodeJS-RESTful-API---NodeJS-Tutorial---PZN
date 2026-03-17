@@ -20,11 +20,11 @@ const checkContactMustExits = async (user, contactId) => {
   if (totalContactInDatabase !== 1) {
     throw new ResponseError(404, "contact is not found");
   }
-  return contacId;
+  return contactId;
 };
 
 const create = async (user, contactId, request) => {
-  const contactId = await checkContactMustExits(user, contactId);
+  contactId = await checkContactMustExits(user, contactId);
 
   const address = validate(createAddressValidation, request);
   address.contact_id = contactId;
