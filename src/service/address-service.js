@@ -1,7 +1,7 @@
-import prismaClient from "../application/database.js";
-const { validate } = require("uuid");
-const { getContactValidation } = require("../validation/contact-validation");
-import ResponseError from "../error/response-error.js";
+import { prismaClient } from "../application/database.js";
+import { validate } from "../validation/validation.js";
+import { getContactValidation } from "../validation/contact-validation.js";
+import { ResponseError } from "../error/response-error.js";
 import { createAddressValidation } from "../validation/address-validation.js";
 
 const create = async (user, contactId, request) => {
