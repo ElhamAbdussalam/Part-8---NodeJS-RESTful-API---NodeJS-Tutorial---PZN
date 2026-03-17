@@ -221,4 +221,27 @@ describe("PUT /api/contacts/:contactId/addresses/:addressId", function () {
 
     expect(result.status).toBe(404);
   });
+
+  it("should reject if address is not valid", async () => {
+    const testContact = await getTestContact();
+    const testAddress = await getTestAddress();
+
+    const result = await supertest(web)
+      .put(
+        "/api/contacts/" +
+          (testContact.id + 1) +
+          "/addresses/" +
+          testAddress.id,
+      )
+      .set("Authorization", "test")
+      .send({
+        street: "Jalan",
+        city: "Kota",
+        province: "Provinsi",
+        country: "Negara",
+        postal_code: "12345678",
+      });
+
+    expect(result.status).toBe(404);
+  });
 });
